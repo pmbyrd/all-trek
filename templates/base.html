@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
+</head>
+<body>
+    <!-- make this a top link should include home, about, contacts, signup
+        if user is logged in show logout, profile sublinks
+    home is a dropdown with sublinks to shows, movies, forms
+    contacts goes to my contacts links(offsite)
+    signup goes to signup page
+    about goes to about page
+
+    -->
+
+      </nav>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <!-- Top navbar content goes here -->
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Forums</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">General Discussion</a></li>
+                        <li><a class="dropdown-item" href="#">Introductions</a></li>
+                        <li><a class="dropdown-item" href="#">News and Announcements</a></li>
+                        <li><a class="dropdown-item" href="#">Support</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Off-topic</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">  
+                  <a class="nav-link" href="#">Signup</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Login/Logout</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">
+            <nav class="nav flex-column fixed-left h-100 sticky-top">
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Series
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Characters</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">John Smith</a>
+                  <a class="dropdown-item" href="#">Jane Doe</a>
+                  <a class="dropdown-item" href="#">Bob Ross</a>
+                  <a class="dropdown-item" href="#">Samantha Smith</a>
+                  <a class="dropdown-item" href="#">Characters</a>
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item">Season</a>
+                </div>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Movies
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Characters</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Harry Potter</a>
+                  <a class="dropdown-item" href="#">Luke Skywalker</a>
+                  <a class="dropdown-item" href="#">Indiana Jones</a>
+                  <a class="dropdown-item" href="#">Bilbo Baggins</a>
+                </div>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Species
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Characters</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Alien 1</a>
+                  <a class="dropdown-item" href="#">Alien 2</a>
+                  <a class="dropdown-item" href="#">Alien 3</a>
+                  <a class="dropdown-item" href="#">Alien 4</a>
+                </div>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Quadrants
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Characters</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Character 1</a>
+                  <a class="dropdown-item" href="#">Character 2</a>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          <div class="col-10">
+            {% block content %}
+      
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+ 
+        
+  
+
+    <!-- *make a search function on the left side of the page, this element stays statics -->
+    
+
+    <!-- lext side link 
+        is a nav menu that one hover over it shows sublinks
+        for movies, shows, forums, species, quandrants
+        make it a dropdown menu that toggles to the right
+        movies is by by crew Original, The Next Generation, Reboot
+        shows is by crew Original, The Next Generation, Deep Space Nine, Voyager, Enterprise, when hover or a show it gives two option
+        first is by season, if by season sublink all seasons for that show, 
+        second is by top billed character for that show, if by character sublink all characters for that show
+    -->
+
+
+  
+
+    <!--! Make footer credits and author:me contact us-->
+
+
+
+    <script src="/static/js/trek.js"></script>
+    <script src="https://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
