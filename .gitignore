@@ -1,4 +1,6 @@
 /venv
 /secrets
 notes.txt
+.env
+config.json
 

@@ -5,6 +5,8 @@
 # !
 from flask import Flask, render_template, request, redirect, url_for, flash, sessions, g, jsonify
 import os
+from config import api_key 
+
 
 app = Flask(__name__)
 
@@ -13,11 +15,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','postgresq
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 #!don't know if this is necessary
+app.config['API_KEY'] = os.environ.get('API_KEY', "/config.json") #!don't know if this is configured correctly
+
+
 
 @app.route('/')
 def root():
     """Root route"""
-    return render_template('index.html')
+    return redirect('/home')
 
 @app.route('/home')
 def home():
