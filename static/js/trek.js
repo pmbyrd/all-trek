@@ -8,7 +8,7 @@
 //     return res.data.api_key
 // }
 const Base_URL = 'https://api.themoviedb.org/3'
-const 
+// const 
 
 async function getApiKey(){
     const res = await axios.get('/api_key')
@@ -31,10 +31,31 @@ async function getMovie(movie){
 async function displayMovies(){
     const res = await getMovie("star trek")
     const results = res.results
+    // map over the results to display the movies
+    // *get the container from the page
+    const $movies = $(".movies")
+    //*append the results to the container 
+    // for each result I want it to be its own card
+    // !critical on the backend side I will feed the data that the movie is going to be displayed
+    // const $result = results.map(r => {
+    //     return `
+    //     <div class="col-4">
+    //         <div class="card" style="width: 18rem;">
+    //             <img src="https://image.tmdb.org/t/p/w500${r.poster_path}" class="card-img-top" alt="...">
+    //             <div class="card-body">
+    //                 <h5 class="card-title text-center">${r.title}</h5>
+    //                 <p class="card-text">${r.overview}</p>
+    //                 <a href="#" class="btn btn-primary">Go somewhere</a>
+    //             </div>`
+    // })
+
     console.table(results)
-    const 
+    // const 
     return results
     
 }
+
+// Todo make function here that will call the database to retieve the movies
+
 
 
