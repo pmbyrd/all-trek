@@ -4,6 +4,7 @@
 # !Double check that all imports are correct
 # !
 from flask import Flask, render_template, request, redirect, url_for, flash, sessions, g, jsonify
+from models import db, connect_db, Animal
 import os
 import json
 
@@ -13,12 +14,18 @@ import json
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "will change later")
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','postgresql:///trek')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///trek'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','postgresql:///s-trek')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 #!don't know if this is necessary
 app.config['API_KEY'] = os.environ.get('API_KEY', "/config.json") #!don't know if this is configured correctly
 app.config.from_file("config.json", load=json.load)
+
+app.app_context().push()
+connect_db(app)
+
+
 
 
 @app.route('/api_key')
