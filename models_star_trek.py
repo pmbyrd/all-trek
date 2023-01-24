@@ -114,7 +114,54 @@ class Character(db.Model):
     hologramDateStatus = db.Column(db.Integer, nullable=False)
     
     
+class Performer(db.Model):
+    """Creates an instance of a performer for the database."""
     
+    __tablename__ = "performers"
+    
+    uid = db.Column(db.Text, primary_key=True)
+    
+    name = db.Column(db.Text, nullable=False)
+    
+    birthname = db.Column(db.Text, nullable=False)
+    
+    gender = db.Column(db.Text, nullable=False)
+    
+    dateOfBirth = db.Column(db.Integer, nullable=False)
+    
+    placeOfBirth = db.Column(db.Text, nullable=False)
+    
+    dateOfDeath = db.Column(db.Integer, nullable=False)
+    
+    placeOfDeath  = db.Column(db.Text, nullable=False)
+        
+    animalPerformer = db.Column(db.Boolean, nullable=False)
+    
+    disPerformer = db.Column(db.Boolean, nullable=False)
+    
+    ds9Perfomer = db.Column(db.Boolean, nullable=False)
+    
+    entPerformer = db.Column(db.Boolean, nullable=False)
+    
+    filmPerformer = db.Column(db.Boolean, nullable=False)
+    
+    standInPerformer = db.Column(db.Boolean, nullable=False)
+    
+    stuntPerformer = db.Column(db.Boolean, nullable=False)
+    
+    tasPerformer = db.Column(db.Boolean, nullable=False)
+    
+    tngPerformer = db.Column(db.Boolean, nullable=False)
+    
+    tosPerformer = db.Column(db.Boolean, nullable=False)
+    
+    videoGamePerformer  = db.Column(db.Boolean, nullable=False)
+    
+    voicePerformer  = db.Column(db.Boolean, nullable=False)
+    
+    voyPerformer = db.Column(db.Boolean, nullable=False)
+    	
+
     
     
     
