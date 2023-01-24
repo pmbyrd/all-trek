@@ -4,7 +4,8 @@
 # !Double check that all imports are correct
 # !
 from flask import Flask, render_template, request, redirect, url_for, flash, sessions, g, jsonify
-from models import db, connect_db, Animal
+from models import db, connect_db
+from models_star_trek import Animal, Title
 import os
 import json
 

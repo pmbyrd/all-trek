@@ -1,10 +1,11 @@
 
 from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from models import db
 
 bcrypt = Bcrypt()
-db = SQLAlchemy()
+# db = SQLAlchemy()
 
 # def connect_db(app):
 #     """Connection to the database that is called in app.py for the Flask app to use."""

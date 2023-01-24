@@ -1,7 +1,7 @@
 import json
 
-from models import db, Animal, Title
-# from models_star_trek import Animal
+from models import db
+from models_star_trek import Animal, Title
 from app import app
 
 
@@ -16,8 +16,11 @@ Animal.query.delete()
 with open('data/animal.json') as json_file:
     data = json.load(json_file)
     for animal in data:
-        print(animal)
-        print(type(animal))
+        if animal["feline"] == True:
+            
+            # animal["feline"] = True
+            print(animal["name"])
+        # print(type(animal))
         # db.session.add(animal)
         # db.session.commit()
 
