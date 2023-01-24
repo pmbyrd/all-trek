@@ -21,3 +21,5 @@ class Animal(db.Model):
     
     canine = db.Column(db.Boolean, nullable=False)
     
+    # feline = db.Column(db.Boolean, nullable=False)
+    

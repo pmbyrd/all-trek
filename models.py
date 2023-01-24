@@ -49,11 +49,11 @@ class User(db.Model):
     def __repr__(self):
         return f"<User #{self.id}: {self.username}, {self.email}>"
     
-    comments = db.relationship("Comment", backref="user", cascade="all, delete-orphan")
+    # comments = db.relationship("Comment", backref="user", cascade="all, delete-orphan")
     
-    posts = db.relationship("Post", backref="user", cascade="all, delete-orphan")
+    # posts = db.relationship("Post", backref="user", cascade="all, delete-orphan")
     
-    tags = db.relationship("Tag", backref="user", cascade="all, delete-orphan")
+    # tags = db.relationship("Tag", backref="user", cascade="all, delete-orphan")
     
     
     
@@ -110,6 +110,7 @@ class Post(db.Model):
 
     create_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow) 
 
+
     
     def __repr__(self):
         return f"<Post #{self.id}: {self.title}, {self.user_id}>"
@@ -142,13 +143,25 @@ class PostTag(db.Model):
     def __repr__(self):
         return f"<Post Tag post_id=#{self.post_id} tag_id=#{self.tag_id}>"
     
+class Comment(db.Model):
+    """Creates a table for comments in the database"""
+     
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    username = db.Column(
+        db.String(20),
+        db.ForeignKey('users.username'),
+        nullable=False,
+    )
+    
 
 class Animal(db.Model):
-    """Creates an instance of animal for the table in the database"""
-
+    """Creates an animal model for the database."""
+    
     __tablename__ = "animals"
     
-    uid = db.Column(db.Text, primary_key=True)
+    uid = db.Column(db.Integer, primary_key=True)
     
     name = db.Column(db.Text, nullable=False)
     
@@ -160,7 +173,29 @@ class Animal(db.Model):
     
     canine = db.Column(db.Boolean, nullable=False)
     
-    feline = db.Column(db.Boolean, nullable=False)
+   
+
+class Title(db.Model):
+    """Creates an instance of a title for the database."""
+    
+    uid = db.Column(db.String, primary_key=True)
+    
+    name = db.Column(db.Text, nullable=False)
+    
+    militaryRank = db.Column(db.Boolean, nullable=False)
+    
+    fleetRank = db.Column(db.Boolean, nullable=False)
+    
+    religiousTitle = db.Column(db.Boolean, nullable=False)
+    
+    position = db.Column(db.Boolean, nullable=False)
+    
+    mirror = db.Column(db.Boolean, nullable=False)
+    
+    
+    
+    
+    
     
 
     
