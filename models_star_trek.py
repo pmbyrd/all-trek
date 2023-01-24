@@ -2,7 +2,6 @@
 
 from flask_sqlalchemy import SQLAlchemy
 from models import db
-# db = SQLAlchemy() 
 
 
 class Animal(db.Model):
@@ -10,20 +9,22 @@ class Animal(db.Model):
 
     __tablename__ = "animals"
     
-    uid = db.Column(db.Text, primary_key=True)
+    
     name = db.Column(db.Text, nullable=False)
+    
+    uid = db.Column(db.Text, primary_key=True)
+    
     earthAnimal = db.Column(db.Boolean, nullable=False) 
+    
     earthInsect = db.Column(db.Boolean, nullable=False)
+    
     avian = db.Column(db.Boolean, nullable=False)    
+    
     canine = db.Column(db.Boolean, nullable=False)
+    
     feline = db.Column(db.Boolean, nullable=False)
     
-# Astronomical Object	
-# uid	str, PK
-# name	str
-# AstronomicalObjectType	str
-# location	FK, location
-# !CRITICAL TO HAVE A FOREIGN KEY FOR LOCATION, without it the data will not be able to be called from the database.
+
 class AstronomicalObject(db.Model):
     """Creates an instance of an astronomical object for the database."""
     
@@ -37,30 +38,6 @@ class AstronomicalObject(db.Model):
     
     location = db.Column(db.JSON)
     
-# Characters	
-# uid	str, PK
-# name	str
-# gender	str
-# yearOfBirth	int
-# monthOfBirth	int
-# dayOfBirth	int
-# placeOfBirth	str
-# yearOfDeath	int
-# monthOfDeath	int
-# dayOfDeath	int
-# placeOfDeath	str
-# height	int
-# weight	int
-# decease	bool
-# bloodtype	str
-# martialStatus	str
-# hologramActivationDate	int
-# hologramStatus	str
-# hologram	bool
-# fictionalCharacter	bool
-# mirror	bool
-# alternateReality	bool
-# hologramDateStatus	int
 
 class Character(db.Model):
     """Creates an instance of a character for the database."""
@@ -71,47 +48,49 @@ class Character(db.Model):
     
     name = db.Column(db.Text, nullable=False)
     
-    gender = db.Column(db.Text, nullable=False)
+    gender = db.Column(db.Text, nullable=True)
     
-    yearOfBirth = db.Column(db.Integer, nullable=False)
+    yearOfBirth = db.Column(db.Integer, nullable=True)
     
-    monthOfBirth = db.Column(db.Integer, nullable=False)
+    monthOfBirth = db.Column(db.Integer, nullable=True)
     
-    dayOfBirth = db.Column(db.Integer, nullable=False)
+    dayOfBirth = db.Column(db.Integer, nullable=True)
     
-    placeOfBirth = db.Column(db.Text, nullable=False)
+    placeOfBirth = db.Column(db.Text, nullable=True)
     
-    yearOfDeath = db.Column(db.Integer, nullable=False)
+    yearOfDeath = db.Column(db.Integer, nullable=True)
     
-    monthOfDeath = db.Column(db.Integer, nullable=False)
+    monthOfDeath = db.Column(db.Integer, nullable=True)
     
-    dayOfDeath = db.Column(db.Integer, nullable=False)
+    dayOfDeath = db.Column(db.Integer, nullable=True)
     
-    placeOfDeath = db.Column(db.Text, nullable=False)
+    placeOfDeath = db.Column(db.Text, nullable=True)
     
-    height = db.Column(db.Integer, nullable=False)
+    height = db.Column(db.Integer, nullable=True)
     
-    weight = db.Column(db.Integer, nullable=False)
+    weight = db.Column(db.Integer, nullable=True)
     
-    deceased = db.Column(db.Boolean, nullable=False)
+    deceased = db.Column(db.Boolean, nullable=True)
     
-    bloodtype = db.Column(db.Text, nullable=False)
+    bloodType = db.Column(db.Text, nullable=True)
     
-    martialStatus = db.Column(db.Text, nullable=False)
+    maritalStatus= db.Column(db.Text, nullable=True)
     
-    hologramActivationDate = db.Column(db.Integer, nullable=False)
+    serialNumber = db.Column(db.Text, nullable=True)
     
-    hologramStatus = db.Column(db.Text, nullable=False)
+    hologramActivationDate = db.Column(db.Integer, nullable=True)
     
-    hologram = db.Column(db.Boolean, nullable=False)
+    hologramStatus = db.Column(db.Text, nullable=True)
     
-    fictionalCharacter = db.Column(db.Boolean, nullable=False)
+    hologram = db.Column(db.Boolean, nullable=True)
     
-    mirror = db.Column(db.Boolean, nullable=False)
+    fictionalCharacter = db.Column(db.Boolean, nullable=True)
     
-    alternateReality = db.Column(db.Boolean, nullable=False)
+    mirror = db.Column(db.Boolean, nullable=True)
     
-    hologramDateStatus = db.Column(db.Integer, nullable=False)
+    alternateReality = db.Column(db.Boolean, nullable=True)
+    
+    hologramDateStatus = db.Column(db.Integer, nullable=True)
     
     
 class Performer(db.Model):
@@ -123,23 +102,23 @@ class Performer(db.Model):
     
     name = db.Column(db.Text, nullable=False)
     
-    birthname = db.Column(db.Text, nullable=False)
+    birthName = db.Column(db.Text, nullable=True)
     
-    gender = db.Column(db.Text, nullable=False)
+    gender = db.Column(db.Text, nullable=True)
     
-    dateOfBirth = db.Column(db.Integer, nullable=False)
+    dateOfBirth = db.Column(db.Text, nullable=True)
     
-    placeOfBirth = db.Column(db.Text, nullable=False)
+    placeOfBirth = db.Column(db.Text, nullable=True)
     
-    dateOfDeath = db.Column(db.Integer, nullable=False)
+    dateOfDeath = db.Column(db.Text, nullable=True)
     
-    placeOfDeath  = db.Column(db.Text, nullable=False)
+    placeOfDeath  = db.Column(db.Text, nullable=True)
         
     animalPerformer = db.Column(db.Boolean, nullable=False)
     
     disPerformer = db.Column(db.Boolean, nullable=False)
     
-    ds9Perfomer = db.Column(db.Boolean, nullable=False)
+    ds9Performer = db.Column(db.Boolean, nullable=False)
     
     entPerformer = db.Column(db.Boolean, nullable=False)
     
@@ -182,33 +161,8 @@ class Title(db.Model):
     position = db.Column(db.Boolean, nullable=False)
     
     mirror = db.Column(db.Boolean, nullable=False)
-    
-# locations	
-# uid	str, PK
-# name	str 
-# earthlyLocation	bool
-# fictionalLocaltion	bool
-# religiousLocation	bool
-# geographicalLocation	bool
-# bodyOfWater	bool
-# country	bool
-# subnationalEntity	bool
-# settlement	bool
-# usSettlement	bool
-# bajoranSettlement	bool
-# colony	bool
-# landform	bool
-# landmark	bool
-# road	bool
-# structure	bool
-# shipyard	bool
-# buildingInterior	bool
-# establishment	bool
-# medicalEstablishmen	bool
-# ds9Establishment	bool
-# school	bool
-# mirror	bool
-# alternateReality	bool
+
+
 class Location(db.Model):
     """Creates an instance of a location for the database."""
     
@@ -261,5 +215,87 @@ class Location(db.Model):
     mirror = db.Column(db.Boolean, nullable=False)
     
     alternateReality = db.Column(db.Boolean, nullable=False)
+    
+    
+class Conflict(db.Model):
+    """Creates an instance of a conflict for the database."""
+    
+    uid = db.Column(db.String, primary_key=True)
+    
+    name = db.Column(db.Text, nullable=False)
+    
+    yearFrom = db.Column(db.Integer, nullable=True)
+    
+    yearTo = db.Column(db.Integer, nullable=True)
+    
+    earthConflict = db.Column(db.Boolean, nullable=False)
+    
+    federationWar = db.Column(db.Boolean, nullable=False)
+    
+    klingonWar = db.Column(db.Boolean, nullable=False)
+    
+    dominionWarBattle = db.Column(db.Boolean, nullable=False)
+    
+    alternateReality = db.Column(db.Boolean, nullable=False)
+    
+    
+class Element(db.Model):
+    """Creates an instance of an element found in the Star Trek universe for the database."""
+    
+    uid = db.Column(db.String, primary_key=True)
+    
+    name = db.Column(db.Text, nullable=False)
+    
+    symbol = db.Column(db.Text, nullable=True)
+    
+    atomicNumber = db.Column(db.Integer, nullable=True)
+    
+    atomicWeight = db.Column(db.Integer, nullable=True)
+    
+    transuranium = db.Column(db.Boolean, nullable=False)
+    
+    gammaSeries = db.Column(db.Boolean, nullable=False)
+    
+    hypersonicSeries = db.Column(db.Boolean, nullable=False)
+    
+    megaSeries = db.Column(db.Boolean, nullable=False)
+    
+    omegaSeries = db.Column(db.Boolean, nullable=False)
+    
+    transonicSeries = db.Column(db.Boolean, nullable=False)
+    
+    worldSeries = db.Column(db.Boolean, nullable=False)
+    
+    
+class Weapon(db.Model):
+    """Creates an instance of a weapon for the database."""
+    
+    uid = db.Column(db.String, primary_key=True)
+    
+    name = db.Column(db.Text, nullable=False)
+    
+    handHeldWeapon = db.Column(db.Boolean, nullable=False)
+    
+    laserTechnology = db.Column(db.Boolean, nullable=False)
+    
+    plasmaTechnology = db.Column(db.Boolean, nullable=False)
+    
+    worldSeries = db.Column(db.Boolean, nullable=False)
+    
+    photonicTechnology = db.Column(db.Boolean, nullable=False)
+    
+    phaserTechnology = db.Column(db.Boolean, nullable=False)
+    
+    mirror = db.Column(db.Boolean, nullable=False)
+    
+    alternateReality = db.Column(db.Boolean, nullable=False)
+    
+        
+    
+    
+    
+    
+     
+     
     
     

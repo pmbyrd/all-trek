@@ -9,7 +9,7 @@
 import json
 
 from models import db
-from models_star_trek import Animal, Title, Location, AstronomicalObject, Character, Performer
+from models_star_trek import Animal, Title, Location, AstronomicalObject, Character, Performer, Element, Conflict, Weapon
 from app import app
 
 
@@ -30,7 +30,8 @@ with open('data/animal.json') as json_file:
         db.session.add(animal)
         db.session.commit()
         json_file.close()
-        print("Animal added to database.")
+
+print("Animal added to database.")
         
 
 with open('data/title.json') as json_file:
@@ -40,18 +41,19 @@ with open('data/title.json') as json_file:
         db.session.add(title)
         db.session.commit()
         json_file.close()
-        print("Title added to database.")
+
+print("Title added to database.")
         
         
 with open('data/astronomicalObject.json') as json_file:
     data = json.load(json_file)
     for astronomicalObject in data:
         astronomicalObject = AstronomicalObject(**astronomicalObject)
-        print(astronomicalObject.location)
         db.session.add(astronomicalObject)
         db.session.commit()
         json_file.close()
-        print("Astronomical Object added to database.")
+
+print("Astronomical Object added to database.")
         
 
 with open('data/location.json') as json_file:
@@ -61,7 +63,8 @@ with open('data/location.json') as json_file:
         db.session.add(location)
         db.session.commit()
         json_file.close()
-        print("Location added to database.")
+
+print("Location added to database.")
         
 
 with open('data/character.json') as json_file:
@@ -71,7 +74,8 @@ with open('data/character.json') as json_file:
         db.session.add(character)
         db.session.commit()
         json_file.close()
-        print("Character added to database.")
+
+print("Character added to database.")
         
         
 with open ('data/performer.json') as json_file:
@@ -81,14 +85,43 @@ with open ('data/performer.json') as json_file:
         db.session.add(performer)
         db.session.commit()
         json_file.close()
-        print("Performer added to database.")
+
+print("Performer added to database.")
         
         
+with open('data/element.json') as json_file:
+    data = json.load(json_file)
+    for element in data:
+        element = Element(**element)
+        db.session.add(element)
+        db.session.commit()
+        json_file.close()
+          
+print("Element added to database.")
+
+
+with open('data/conflict.json') as json_file:
+    data = json.load(json_file)
+    for conflict in data:
+        conflict = Conflict(**conflict)
+        db.session.add(conflict)
+        db.session.commit()
+        json_file.close()
     
+print("Conflict added to database.")
 
+
+with open('data/weapon.json') as json_file:
+    data = json.load(json_file)
+    for weapon in data:
+        weapon = Weapon(**weapon)
+        db.session.add(weapon)
+        db.session.commit()
+        json_file.close()
         
-
-
+print("Weapon added to database.")
+        
+        
 
         
 

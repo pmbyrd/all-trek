@@ -33,17 +33,16 @@ class User(db.Model):
     
     password = db.Column(db.Text, nullable=False)
     
-    
     bio = db.Column(db.Text, nullable=True)
     
     def __repr__(self):
         return f"<User #{self.id}: {self.username}, {self.email}>"
     
-    comments = db.relationship("Comment", backref="user", cascade="all, delete-orphan")
+    # comments = db.relationship("Comment", backref="user", cascade="all, delete-orphan")
     
-    posts = db.relationship("Post", backref="user", cascade="all, delete-orphan")
+    # posts = db.relationship("Post", backref="user", cascade="all, delete-orphan")
     
-    tags = db.relationship("Tag", backref="user", cascade="all, delete-orphan")
+    # tags = db.relationship("Tag", backref="user", cascade="all, delete-orphan")
     
     
     
