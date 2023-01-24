@@ -15,8 +15,8 @@ import json
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "will change later")
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///trek'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','postgresql:///s-trek')
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///trek'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','postgresql:///trek')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 #!don't know if this is necessary
