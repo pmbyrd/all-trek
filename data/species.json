@@ -8817,24 +8817,6 @@
     "alternateReality": false
   },
   {
-    "uid": "SPMA0000013210",
-    "name": "Platonian",
-    "homeworld": null,
-    "quadrant": null,
-    "extinctSpecies": false,
-    "warpCapableSpecies": false,
-    "extraGalacticSpecies": false,
-    "humanoidSpecies": true,
-    "reptilianSpecies": false,
-    "nonCorporealSpecies": false,
-    "shapeshiftingSpecies": false,
-    "spaceborneSpecies": false,
-    "telepathicSpecies": true,
-    "transDimensionalSpecies": false,
-    "unnamedSpecies": false,
-    "alternateReality": false
-  },
-  {
     "uid": "SPMA0000052033",
     "name": "Photonic lifeform",
     "homeworld": null,
@@ -9578,45 +9560,7 @@
     "unnamedSpecies": false,
     "alternateReality": false
   },
-  {
-    "uid": "SPMA0000049973",
-    "name": "Petarian",
-    "homeworld": null,
-    "quadrant": null,
-    "extinctSpecies": false,
-    "warpCapableSpecies": false,
-    "extraGalacticSpecies": false,
-    "humanoidSpecies": false,
-    "reptilianSpecies": false,
-    "nonCorporealSpecies": false,
-    "shapeshiftingSpecies": false,
-    "spaceborneSpecies": false,
-    "telepathicSpecies": false,
-    "transDimensionalSpecies": false,
-    "unnamedSpecies": false,
-    "alternateReality": false
-  },
-  {
-    "uid": "SPMA0000052033",
-    "name": "Photonic lifeform",
-    "homeworld": null,
-    "quadrant": {
-      "uid": "ASMA0000000662",
-      "name": "Delta Quadrant"
-    },
-    "extinctSpecies": false,
-    "warpCapableSpecies": false,
-    "extraGalacticSpecies": false,
-    "humanoidSpecies": false,
-    "reptilianSpecies": false,
-    "nonCorporealSpecies": true,
-    "shapeshiftingSpecies": false,
-    "spaceborneSpecies": false,
-    "telepathicSpecies": false,
-    "transDimensionalSpecies": false,
-    "unnamedSpecies": true,
-    "alternateReality": false
-  },
+
   {
     "uid": "SPMA0000019063",
     "name": "Phylosian",

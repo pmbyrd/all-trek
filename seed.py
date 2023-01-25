@@ -9,7 +9,7 @@
 import json
 
 from models import db
-from models_star_trek import Animal, Title, Location, AstronomicalObject, Character, Performer, Element, Conflict, Weapon
+from models_star_trek import Animal, Title, Location, AstronomicalObject, Character, Performer, Element, Conflict, Weapon, Food, Technology, Company, Staff, Species, Organization, Occupation
 from app import app
 
 
@@ -122,10 +122,81 @@ with open('data/weapon.json') as json_file:
 print("Weapon added to database.")
         
         
+with open('data/food.json') as json_file:
+    data = json.load(json_file)
+    for food in data:
+        food = Food(**food)
+        db.session.add(food)
+        db.session.commit()
+        json_file.close()
+        
+print("Food added to database.")
+
+
+with open('data/technology.json') as json_file:
+    data = json.load(json_file)
+    for technology in data:
+        technology = Technology(**technology)
+        db.session.add(technology)
+        db.session.commit()
+        json_file.close()
+        
+print("Technology added to database.")
+
+
+with open('data/company.json') as json_file:
+    data = json.load(json_file)
+    for company in data:
+        company = Company(**company)
+        db.session.add(company)
+        db.session.commit()
+        json_file.close()
+        
+print("Company added to database.")
+
+
+with open('data/staff.json') as json_file:
+    data = json.load(json_file)
+    for staff in data:
+        staff = Staff(**staff)
+        db.session.add(staff)
+        db.session.commit()
+        json_file.close()
+
+print("Staff added to database.")
+
+with open('data/species.json') as json_file:
+    data = json.load(json_file)
+    for species in data:
+        species_obj = Species(**species)
+        db.session.merge(species_obj)
+    db.session.commit()
+    json_file.close()
 
         
+print("Species added to database.")
 
+
+with open('data/organization.json') as json_file:
+    data = json.load(json_file)
+    for organization in data:
+        organization = Organization(**organization)
+        db.session.add(organization)
+        db.session.commit()
+        json_file.close()
         
+print("Organization added to database.")
+
+
+with open('data/occupation.json') as json_file:
+    data = json.load(json_file)
+    for occupation in data:
+        occupation = Occupation(**occupation)
+        db.session.add(occupation)
+        db.session.commit()
+        json_file.close()
+        
+print("Occupation added to database.")
    
         
 
