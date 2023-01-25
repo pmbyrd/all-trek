@@ -9,7 +9,7 @@
 import json
 
 from models import db
-from models_star_trek import Animal, Title, Location, AstronomicalObject, Character, Performer, Element, Conflict, Weapon, Food, Technology, Company, Staff, Species, Organization, Occupation
+from models_star_trek import Animal, Title, Location, AstronomicalObject, Character, Performer, Element, Conflict, Weapon, Food, Technology, Company, Staff, Species, Organization, Occupation, SpacecraftClass, Spacecraft
 from app import app
 
 
@@ -197,8 +197,25 @@ with open('data/occupation.json') as json_file:
         json_file.close()
         
 print("Occupation added to database.")
+
+
+with open('data/spacecraftClass.json') as json_file:
+    data = json.load(json_file)
+    for spacecraftClass in data:
+        spacecraftClass = SpacecraftClass(**spacecraftClass)
+        db.session.add(spacecraftClass)
+        db.session.commit()
+        json_file.close()
    
+with open('data/spacecraft.json') as json_file:
+    data = json.load(json_file)
+    for spacecraft in data:
+        spacecraft = Spacecraft(**spacecraft)
+        db.session.add(spacecraft)
+        db.session.commit()
+        json_file.close()
         
+
 
 
 

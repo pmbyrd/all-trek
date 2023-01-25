@@ -149,6 +149,8 @@ class Performer(db.Model):
 class Title(db.Model):
     """Creates an instance of a title for the database."""
     
+    __tablename__ = "titles"
+    
     uid = db.Column(db.String, primary_key=True)
     
     name = db.Column(db.Text, nullable=False)
@@ -166,6 +168,8 @@ class Title(db.Model):
 
 class Location(db.Model):
     """Creates an instance of a location for the database."""
+    
+    __tablename__ = "locations"
     
     uid = db.Column(db.String, primary_key=True)
     
@@ -221,6 +225,9 @@ class Location(db.Model):
 class Conflict(db.Model):
     """Creates an instance of a conflict for the database."""
     
+    __tablename__ = "conflicts"
+    
+    
     uid = db.Column(db.String, primary_key=True)
     
     name = db.Column(db.Text, nullable=False)
@@ -242,6 +249,9 @@ class Conflict(db.Model):
     
 class Element(db.Model):
     """Creates an instance of an element found in the Star Trek universe for the database."""
+    
+    __tablename__ = "elements"
+    
     
     uid = db.Column(db.String, primary_key=True)
     
@@ -271,6 +281,9 @@ class Element(db.Model):
 class Weapon(db.Model):
     """Creates an instance of a weapon for the database."""
     
+    __tablename__ = "weapons"
+    
+    
     uid = db.Column(db.String, primary_key=True)
     
     name = db.Column(db.Text, nullable=False)
@@ -294,6 +307,9 @@ class Weapon(db.Model):
 
 class Food(db.Model):
     """Creates an instance of a food for the database."""
+    
+    __tablename__ = "foods"
+    
     
     uid = db.Column(db.String, primary_key=True)
     
@@ -322,6 +338,9 @@ class Food(db.Model):
 
 class Technology(db.Model):
     """Creates an instance of a technology for the database."""
+    
+    __tablename__ = "technologies"
+    
     
     uid = db.Column(db.String, primary_key=True)
     
@@ -371,6 +390,9 @@ class Technology(db.Model):
 class Company(db.Model):
     """Creates an instance of a company for the database."""
     
+    __tablename__ = "companies"
+    
+    
     uid = db.Column(db.String, primary_key=True)
     
     name = db.Column(db.Text, nullable=False)
@@ -411,6 +433,9 @@ class Company(db.Model):
 
 class Staff(db.Model):
     """Creates an instace of a staff member for the database."""
+    
+    __tablename__ = "staff"
+    
     
     uid = db.Column(db.String, primary_key=True)
     
@@ -543,6 +568,9 @@ class Species(db.Model):
     """Creates an instance of a species from the Star Trek universe for the database"""
     # *homeworld must reference a planet in the Planets table, quadrant must also be a referenced to the astronomical quadrant of the planet
     
+    __tablename__ = 'species'
+    
+    
     uid = db.Column(db.String, primary_key=True)
     
     name = db.Column(db.Text, nullable=False)
@@ -583,6 +611,9 @@ class Species(db.Model):
 class Organization(db.Model):
     """Creates an instance of an organization from the Star Trek universe for the database"""
     
+    __tablename__ = 'organizations'
+    
+    
     uid = db.Column(db.String, primary_key=True)
     
     name = db.Column(db.Text, nullable=False)
@@ -615,6 +646,9 @@ class Organization(db.Model):
 class Occupation(db.Model):
     """Creates an instance of an occupation from the Star Trek universe for the database"""
     
+    __tablename__  = 'occupations'
+    
+    
     uid = db.Column(db.String, primary_key=True)
     
     name = db.Column(db.Text, nullable=False)
@@ -626,14 +660,142 @@ class Occupation(db.Model):
     scientificOccupation = db.Column(db.Boolean, nullable=False)
     
 
-# class SpacecraftClass(db.Model):
-#     """Creates an instance of a spacecraft class from the Star Trek universe for the database these classes are used to create the spacecraft table"""
+class SpacecraftClass(db.Model):
+    """Creates an instance of a spacecraft class from the Star Trek universe for the database these classes are used to create the spacecraft table"""
+    
+    __tablename__ = 'spacecraftClasses'
+    
+    
+    uid = db.Column(db.String, primary_key=True)
+    
+    name = db.Column(db.Text, nullable=False)
+    
+    numberOfDecks = db.Column(db.Integer, nullable=True)
+    
+    warpCapable = db.Column(db.Boolean, nullable=False)
+    
+    alternateReality = db.Column(db.Boolean, nullable=False)
+    
+    activeFrom = db.Column(db.Text, nullable=True)
+    
+    activeTo = db.Column(db.Text, nullable=True)
+    
+    species = db.Column(db.JSON, nullable=True)
+    
+    species_uid = db.Column(db.String, db.ForeignKey('species.uid'), nullable=True)
+    
+    owner = db.Column(db.Text, nullable=True)
+    
+    operator = db.Column(db.Text, nullable=True)
+    
+    affiliation = db.Column(db.Text, nullable=True)
+    
+# !critcal need to fix the Spacecraft class, overwrote the correct file with the incorrect file
+class Spacecraft(db.Model):
+    """Creates an instance of a spacecraft from the Star Trek universe for the database"""
+    
+    __tablename__ = 'spacecraft'
+    
+    
+    uid = db.Column(db.String, primary_key=True)
+    
+    name = db.Column(db.Text, nullable=False)
+    
+    registry = db.Column(db.Text, nullable=True)
+    
+    status = db.Column(db.Text, nullable=True)
+    
+    dateStatus = db.Column(db.Text, nullable=True)
+    
+    spacecraftClass = db.Column(db.JSON, nullable=True)
+    
+    # !Owner and operator must be referenced to the organizations table when not null it is a foreign key the data is json and must handle the reading the data from the json object
+    owner = db.Column(db.JSON, nullable=True)
+    
+    orginization_uid = db.Column(db.String, db.ForeignKey('organizations.uid'), nullable=True)
+    
+    operator = db.Column(db.Text, nullable=True)
+    
+    
+class Material(db.Model):
+    """Creates an instance of a material from the Star Trek universe for the database"""
+    
+    __tablename__ = 'materials'
+    
+    
+    uid = db.Column(db.String, primary_key=True)
+    
+    name = db.Column(db.Text, nullable=False)
+    
+    chemicalCompond = db.Column(db.Boolean, nullable=False)
+    
+    biochemicalCompond = db.Column(db.Boolean, nullable=False)
+    
+    drug = db.Column(db.Boolean, nullable=False)
+    
+    poisonousSubstance = db.Column(db.Boolean, nullable=False)
+    
+    explosive = db.Column(db.Boolean, nullable=False)
+    
+    gemstone = db.Column(db.Boolean, nullable=False)
+    
+    alloyOrComposite = db.Column(db.Boolean, nullable=False)
+    
+    fuel = db.Column(db.Boolean, nullable=False)
+    
+    mineral = db.Column(db.Boolean, nullable=False)
+    
+    preciousMaterial = db.Column(db.Boolean, nullable=False)
+    
+    
+class Movie(db.Model):
+    """Creates an instance of a movie from the Star Trek universe for the database"""
+    
+    __tablename__ = "movies"
+    
+    uid = db.Column(db.String, primary_key=True)
+    
+    title = db.Column(db.Text, nullable=False)
+    
+    mainDirector = db.Column(db.Text, nullable=False)
+    
+    titleBulgarian = db.Column(db.Text, nullable=True)
+    
+    titleCatalan = db.Column(db.Text, nullable=True)
+    
+    titleChineseTradtional = db.Column(db.Text, nullable=True)
+    
+    titleGerman = db.Column(db.Text, nullable=True)
+    
+    titleItalian = db.Column(db.Text, nullable=True)
+    
+    titleJapanese = db.Column(db.Text, nullable=True)
+    
+    titlePolish = db.Column(db.Text, nullable=True)
+    
+    titleRussian = db.Column(db.Text, nullable=True)
+    
+    titleSerbian = db.Column(db.Text, nullable=True)
+    
+    titleSpanish = db.Column(db.Text, nullable=True)
+    
+    stardateFrom = db.Column(db.Text, nullable=True)
+    
+    stardateTo = db.Column(db.Text, nullable=True)
+    
+    yearFrom = db.Column(db.Text, nullable=True)
+    
+    yearTo = db.Column(db.Text, nullable=True)
+    
+    usReleaseDate = db.Column(db.Text, nullable=True)
     
     
     
-
-# class Spacecraft(db.Model):
-#     """Creates an instance of a spacecraft from the Star Trek universe for the database"""
+    
+    
+    
+   
+    
     
     
     
