@@ -9,7 +9,7 @@
 import json
 
 from models import db
-from models_star_trek import Animal, Title, Location, AstronomicalObject, Character, Performer, Element, Conflict, Weapon, Food, Technology, Company, Staff, Species, Organization, Occupation, SpacecraftClass, Spacecraft
+from models_star_trek import Animal, Title, Location, AstronomicalObject, Character, Performer, Element, Conflict, Weapon, Food, Technology, Company, Staff, Species, Organization, Occupation, SpacecraftClass, Spacecraft, Material, Movie, Series, Season, Episode
 from app import app
 
 
@@ -206,6 +206,9 @@ with open('data/spacecraftClass.json') as json_file:
         db.session.add(spacecraftClass)
         db.session.commit()
         json_file.close()
+        
+print("Spacecraft Class added to database.")
+
    
 with open('data/spacecraft.json') as json_file:
     data = json.load(json_file)
@@ -215,10 +218,64 @@ with open('data/spacecraft.json') as json_file:
         db.session.commit()
         json_file.close()
         
+print('Spacecraft added to database')
+
+
+with open('data/material.json') as json_file:
+    data = json.load(json_file)
+    for material in data:
+        material = Material(**material)
+        db.session.add(material)
+        db.session.commit()
+        json_file.close()
+        
+print('Material added to database')
+
+
+with open('data/movie.json') as json_file:
+    data = json.load(json_file)
+    for movie in data:
+        movie = Movie(**movie)
+        db.session.add(movie)
+        db.session.commit()
+        json_file.close()
+        
+print('Movie added to database')
+
+
+with open('data/series.json') as json_file:
+    data = json.load(json_file)
+    for series in data:
+        series = Series(**series)
+        db.session.add(series)
+        db.session.commit()
+        json_file.close()
+
+print('Series added to database')
+
+
+with open('data/season.json') as json_file:
+    data = json.load(json_file)
+    for season in data:
+        season = Season(**season)
+        db.session.add(season)
+        db.session.commit()
+        json_file.close()
+
+
+with open('data/episode.json') as json_file:
+    data = json.load(json_file)
+    for episode in data:
+        episode = Episode(**episode)
+        db.session.add(episode)
+        db.session.commit()
+        json_file.close()
+
+print('Episode added to database')
 
 
 
-
+        
 
 
 

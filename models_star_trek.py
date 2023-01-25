@@ -714,7 +714,7 @@ class Spacecraft(db.Model):
     
     orginization_uid = db.Column(db.String, db.ForeignKey('organizations.uid'), nullable=True)
     
-    operator = db.Column(db.Text, nullable=True)
+    operator = db.Column(db.JSON, nullable=True)
     
     
 class Material(db.Model):
@@ -727,9 +727,9 @@ class Material(db.Model):
     
     name = db.Column(db.Text, nullable=False)
     
-    chemicalCompond = db.Column(db.Boolean, nullable=False)
+    chemicalCompound = db.Column(db.Boolean, nullable=False)
     
-    biochemicalCompond = db.Column(db.Boolean, nullable=False)
+    biochemicalCompound = db.Column(db.Boolean, nullable=False)
     
     drug = db.Column(db.Boolean, nullable=False)
     
@@ -757,13 +757,15 @@ class Movie(db.Model):
     
     title = db.Column(db.Text, nullable=False)
     
-    mainDirector = db.Column(db.Text, nullable=False)
+    mainDirector = db.Column(db.JSON, nullable=True)
+    
+    staff_uid = db.Column(db.String, db.ForeignKey('staff.uid'), nullable=True)
     
     titleBulgarian = db.Column(db.Text, nullable=True)
     
     titleCatalan = db.Column(db.Text, nullable=True)
     
-    titleChineseTradtional = db.Column(db.Text, nullable=True)
+    titleChineseTraditional = db.Column(db.Text, nullable=True)
     
     titleGerman = db.Column(db.Text, nullable=True)
     
@@ -788,6 +790,99 @@ class Movie(db.Model):
     yearTo = db.Column(db.Text, nullable=True)
     
     usReleaseDate = db.Column(db.Text, nullable=True)
+    
+    
+# Todo load in the shows information by series, season episode in that order
+
+class Series(db.Model):
+    """Creates an instance of a series from the Star Trek universe for the database, the series has a relationship with the company table as well as the seasons and episodes table"""
+    
+    uid = db.Column(db.String, primary_key=True)
+    
+    title = db.Column(db.Text, nullable=False)
+    
+    abbreviation = db.Column(db.Text, nullable=False)
+    
+    productionStartYear = db.Column(db.Integer, nullable=True)
+    
+    productionEndYear = db.Column(db.Integer, nullable=True)
+    
+    originalRunStartDate = db.Column(db.Text, nullable=True)
+    
+    originalRunEndDate = db.Column(db.Text, nullable=True)
+    
+    seasonsCount = db.Column(db.Integer, nullable=True)
+    
+    episodesCount = db.Column(db.Integer, nullable=True)
+    
+    featureLengthEpisodesCount = db.Column(db.Integer, nullable=True)
+    
+    productionCompany = db.Column(db.JSON, nullable=True)
+    
+    originalBroadcaster = db.Column(db.JSON, nullable=True)
+    
+    companies_uid = db.Column(db.String, db.ForeignKey('companies.uid'), nullable=True)
+    
+    
+class Season(db.Model):
+    """Creates an instance of a season based off of the series table"""
+    
+    uid = db.Column(db.String, primary_key=True)
+    
+    title = db.Column(db.Text, nullable=False)
+    
+    series = db.Column(db.JSON, nullable=True)
+    
+    series_uid = db.Column(db.String, db.ForeignKey('series.uid'), nullable=True)
+    
+    seasonNumber = db.Column(db.Integer, nullable=False)
+    
+    numberOfEpisodes = db.Column(db.Integer, nullable=True)
+    
+    
+class Episode(db.Model):
+    """Creates an instance of an episode based off of the season table"""
+    
+    uid = db.Column(db.String, primary_key=True)
+    
+    title = db.Column(db.Text, nullable=False)
+    
+    titleGerman = db.Column(db.Text, nullable=True)
+    
+    titleItalian = db.Column(db.Text, nullable=True)
+    
+    titleJapanese = db.Column(db.Text, nullable=True)
+    
+    series = db.Column(db.JSON, nullable=True)
+    
+    season = db.Column(db.JSON, nullable=True)
+    
+    seasonNumber = db.Column(db.Integer, nullable=False)
+    
+    episodeNumber = db.Column(db.Integer, nullable=False)
+    
+    productionSerialNumber = db.Column(db.Text, nullable=False)
+    
+    featureLength = db.Column(db.Boolean, nullable=False)
+    
+    stardateFrom = db.Column(db.Float, nullable=True)
+    
+    stardateTo = db.Column(db.Float, nullable=True)
+    
+    yearFrom = db.Column(db.Integer, nullable=True)
+    
+    yearTo = db.Column(db.Integer, nullable=True)
+    
+    usAirDate = db.Column(db.Text, nullable=True)
+    
+    finalScriptDate = db.Column(db.Text, nullable=True)
+    
+    series_uid = db.Column(db.String, db.ForeignKey('series.uid'), nullable=True)
+    
+    
+    
+    
+    
     
     
     
