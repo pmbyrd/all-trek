@@ -1,0 +1,23 @@
+<!-- Must be configured properly to handle blueprints -->
+{% extends "base.html"%}
+<link rel="stylesheet" href="/movie/static/movie.css">
+
+{% block title %}All Movies{% endblock %}
+
+{% block content %}
+
+    <h1>All Movies</h1>
+    <ul>
+        {% for movie in movies %}
+            <li>
+                <a href="{{ url_for('movies.movie', movie_id=movie.id) }}">
+                    {{ movie.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    {% endblock %}
+    <script src="/movie/static/js/movie.js"></script>
+    <script src="/movie/static/js/movie-model.js"></script>
+

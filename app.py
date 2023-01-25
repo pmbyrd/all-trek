@@ -1,13 +1,15 @@
 
 # *Configure imports
 # !
-# !Double check that all imports are correct
+# !Double check that all imports are correct and necessary
 # !
 from flask import Flask, render_template, request, redirect, url_for, flash, sessions, g, jsonify
 from models import db, connect_db
 from models_star_trek import Animal, Title
 import os
 import json
+
+from movie.movie import movie
 
 
 
@@ -25,6 +27,9 @@ app.config.from_file("config.json", load=json.load)
 
 app.app_context().push()
 connect_db(app)
+
+# ! using blueprints important to register for each one that is created
+app.register_blueprint(movie)
 
 
 
