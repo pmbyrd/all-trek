@@ -1,8 +1,7 @@
 
 from datetime import datetime
-# from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
 from models import db
+from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt()
 # db = SQLAlchemy()
