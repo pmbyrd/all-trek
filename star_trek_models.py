@@ -1,7 +1,8 @@
 """This module contains the Star Trek models for the database."""
 
 from flask_sqlalchemy import SQLAlchemy
-from models import db
+from models import db, connect_db
+
 
 
 class Animal(db.Model):

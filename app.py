@@ -3,11 +3,14 @@
 # !
 # !Double check that all imports are correct
 # !
-from flask import Flask, render_template, request, redirect, url_for, flash, sessions, g, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, session, g, jsonify
 from models import db, connect_db
-from models_star_trek import Animal, Title
+from star_trek_models import Movie, Actor, Character
 import os
 import json
+from trek_blueprints.movies.routes import movie_bp
+from trek_blueprints.admin.routes import admin_bp
+
 
 
 
@@ -23,10 +26,21 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 #!don't know if this is necessary
 app.config['API_KEY'] = os.environ.get('API_KEY', "/config.json") #!don't know if this is configured correctly
 app.config.from_file("config.json", load=json.load)
 
-app.app_context().push()
+
+
+with app.app_context().push():
+    db.init_app(app)
+    db.create_all()
+
+
 connect_db(app)
 
 
+
+
+# register the blueprints
+app.register_blueprint(movie_bp)
+app.register_blueprint(admin_bp)
 
 
 @app.route('/api_key')
