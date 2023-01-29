@@ -1,0 +1,17 @@
+{% extends "base.html"%}
+{% block title%}Episodes{% endblock %}
+
+{% block content %}
+
+this is the episodes page
+
+    <h1>Episodes List</h1>
+    <ul>
+        {% for episode in episodes %}
+            <li>{{ episode.title }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
+
