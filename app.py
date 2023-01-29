@@ -63,6 +63,7 @@ def home():
     """Home route"""
     return render_template('index.html')
 
+
 @app.route("/testdb")
 def testdb():
     try:
